@@ -1,0 +1,140 @@
+[mysqldump]
+quick
+max_allowed_packet = 512M
+default-character-set=utf8mb4
+
+[client]
+default-character-set=utf8mb4
+
+[mysql]
+prompt="\\u@\h:\\p : \\d \\r:\\m:\\s> "
+#pager="less -i -n -S"
+tee=/data/mysql_3306/query.log
+no-auto-rehash
+default-character-set=utf8mb4
+show-warnings
+
+[mysqld]
+user = mysql
+basedir = /usr/local/mysql
+#thread_handling = pool-of-threads
+interactive_timeout = 1800
+wait_timeout = 1800
+character-set-server = utf8mb4
+open_files_limit = 65535
+max_connections = 2000
+max_connect_errors = 100000000000
+lower_case_table_names=1
+default-storage-engine = InnoDB
+skip-name-resolve = 1
+log_warnings = 2
+
+#logs
+slow_query_log = 1
+#slow_query_log_file = /data/mysql_3306/slow.log
+long_query_time = 1
+log_slow_verbosity=full
+show_compatibility_56=on
+
+#gtid
+gtid_mode=on
+enforce-gtid-consistency=on
+binlog-gtid-simple-recovery=1
+log_slave_updates=1
+
+#binlog
+binlog_format = row
+binlog_cache_size = 20M
+max_binlog_size = 1G
+max_binlog_cache_size = 2G
+expire_logs_days = 5
+log_bin_trust_function_creators = 1
+
+#relay log
+skip_slave_start = 1
+max_relay_log_size = 1G
+relay_log_purge = 1
+relay_log_recovery = 1
+slave_net_timeout=60
+master_info_repository = "TABLE"
+relay_log_info_repository = "TABLE"
+slave_parallel_type='LOGICAL_CLOCK'
+slave_parallel_workers=8
+
+#buffers & cache
+table_open_cache = 2048
+table_definition_cache = 2048
+sort_buffer_size = 1M
+join_buffer_size = 1M
+thread_cache_size = 256
+query_cache_size = 0
+query_cache_type = 0
+query_cache_limit = 256K
+query_cache_min_res_unit = 512
+thread_stack = 192K
+max_heap_table_size = 96m
+tmp_table_size = 96M
+key_buffer_size = 8M
+read_buffer_size = 1M
+read_rnd_buffer_size = 1M
+bulk_insert_buffer_size = 32M
+max_allowed_packet = 1G
+
+#myisam
+myisam_sort_buffer_size = 128M
+myisam_max_sort_file_size = 5G
+
+#innodb
+innodb_buffer_pool_instances = 1
+innodb_data_file_path = ibdata:12M:autoextend
+innodb_flush_log_at_trx_commit = 0
+sync_binlog = 0
+#innodb_log_buffer_size = 64M
+#innodb_log_file_size = 128M
+innodb_log_buffer_size = 16M
+innodb_log_file_size = 128M
+innodb_log_files_in_group = 2
+innodb_max_dirty_pages_pct = 50
+innodb_file_per_table = 1
+innodb_lock_wait_timeout = 10
+innodb_rollback_on_timeout
+innodb_status_file = 1
+innodb_io_capacity = 40000
+innodb_io_capacity_max = 45000
+innodb_flush_method = O_DIRECT
+innodb_open_files = 65535
+innodb_file_format=Barracuda
+innodb_file_format_check=1
+innodb_strict_mode=1
+#ssd上面设置这个参数
+innodb_flush_neighbors=0
+innodb_thread_concurrency = 0
+innodb_purge_threads = 4
+innodb_buffer_pool_dump_at_shutdown = 1
+innodb_buffer_pool_load_at_startup = 1
+innodb_numa_interleave = 1
+log_bin_trust_function_creators = 1
+#performance_schema_instrument='%memory%=on'
+sql_mode='NO_ENGINE_SUBSTITUTION'
+#optimizer_switch='derived_merge=off'
+performance_schema=off
+
+#每个实例的配置参数
+port = 3306
+server-id = 2033306
+pid-file=/tmp/mysql3306.pid
+socket = /tmp/mysql3306.sock
+log-error=/data/mysql_3306/error.log
+log-bin = /data/mysql_3306/binlog/mysql-bin
+tmpdir = /data/mysql_3306/tmpdir
+datadir= /data/mysql_3306/mydata
+innodb_data_home_dir=/data/mysql_3306/innodb_ts
+innodb_log_group_home_dir=/data/mysql_3306/innodb_log
+innodb_undo_directory =/data/mysql_3306/innodb_ts/undolog
+innodb_undo_logs = 128
+innodb_undo_tablespaces = 3
+transaction_isolation=REPEATABLE-READ
+innodb_buffer_pool_size = 1G
+slow_query_log_file = /data/mysql_3306/slow.log
+extra_port =33306
+
