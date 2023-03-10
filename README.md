@@ -1,4 +1,8 @@
 # onekey_install_mysql
+https://github.com/mxfj/onekey_install_mysql.git
+
+chmod +x install_mysql.sh
+./install_mysql.sh
 
 # install input example
 ```
