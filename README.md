@@ -1,9 +1,11 @@
 # onekey_install_mysql
-https://github.com/mxfj/onekey_install_mysql.git
-
+```
+cd /tmp
+git clone https://github.com/mxfj/onekey_install_mysql.git
+cd onekey_install_mysql
 chmod +x install_mysql.sh
 ./install_mysql.sh
-
+```
 # install input example
 ```
 输入要安装实例的版本: 5.7
