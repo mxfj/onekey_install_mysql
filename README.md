@@ -1,5 +1,7 @@
 # onekey_install_mysql
 ```
+yum -y install autoconf lrzsz wget MySQL-python -y
+
 cd /tmp
 git clone https://github.com/mxfj/onekey_install_mysql.git
 cd onekey_install_mysql
